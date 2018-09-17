@@ -8,7 +8,6 @@ class Board:
     def __init__(self):
         self.board = [[EMPTY_SPACE for x in range(3)] for y in range(3)]
 
-    # Prints the current board to console
     def get_current_board_string(self):
         output_board = '\n';
         for j in self.board:

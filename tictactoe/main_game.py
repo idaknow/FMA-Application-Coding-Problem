@@ -6,11 +6,13 @@ from player import Player;
 
 # Welcome to Ida's TicTacToe!
 
+WELCOME_MESSAGE = "Welcome to Tic Tac Toe! \n\nHere's the current board:"
 ERROR_MESSAGE = {"General":"\nSorry, we could not recognise your input. Please try again.\n",
                 "Duplicate":"\nSomeone is already placed here! Please enter another position.\n",
-                "Invalid Numbers":"\nInvalid input numbers, make sure the position is between co-ordinates 1,1 and 3,3. Try again!\n",
-                "Incorrect Format":"\nSorry, we could not recognise your input. Make sure you're entering an \'x,y\' where X and Y are values between 1 and 3. Try again!\n"
-                }
+                "Invalid Numbers":"\nInvalid input numbers, make sure your co-ordinates are between 1,1 and 3,3. Try again!\n",
+                "Incorrect Format":"\nSorry, we could not recognise your input. Make sure you're entering an \'x,y\', where X and Y are values between 1 and 3. Try again!\n"}
+GAME_OVER_MESSAGE = "Game over - It\'s a draw!\n"
+QUIT_GAME_MESSAGE = "\nYou quit the game - Goodbye!\n"
 COMMA=","
 QUIT="q"
 
@@ -24,7 +26,7 @@ class TicTacToe:
         self.j = 0;
 
     def start_game(self):
-        print ("Welcome to Tic Tac Toe! \n\nHere's the current board:");
+        print (WELCOME_MESSAGE);
         self.show_current_board();
         self.play();
 
@@ -38,7 +40,6 @@ class TicTacToe:
 
                 if self.board.has_someone_placed_here(self.i, self.j):
                     self.board.add_move_to_board(self.player.get_player_move(), self.i, self.j);
-                    self.show_current_board();
                     self.finish_game_if_end();
                     self.player.switch_player();
                 else:
@@ -48,6 +49,7 @@ class TicTacToe:
 
             player_input_coordinates = self.get_player_input();
 
+        print (QUIT_GAME_MESSAGE)
         exit(); # exit if the player wants to quit
 
     def show_current_board(self):
@@ -77,7 +79,7 @@ class TicTacToe:
         return False, error_message;
 
     def get_player_input(self):
-        return input("Player " + str(self.player.get_player_number()) + " enter a coord x,y to place your " + self.player.get_player_move() + " or enter 'q' to give up: ");
+        return input("Player " + str(self.player.get_player_number()) + " enter a coord \'x,y\' to place your " + self.player.get_player_move() + " or enter \'q\' to give up: ");
 
     def finish_game_if_end(self):
         if self.board.won_the_game():
@@ -85,5 +87,5 @@ class TicTacToe:
             exit();
 
         if self.board.last_move():
-            print("Game over - It's a draw!\n");
+            print(GAME_OVER_MESSAGE);
             exit();

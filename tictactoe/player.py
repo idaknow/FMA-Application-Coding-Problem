@@ -10,7 +10,6 @@ class Player:
         self.player_number = 1;
         self.player_move = PLAYER_1_MOVE;
 
-    # Adds the player's X or O (depending on which player) to the board
     def switch_player(self):
         if self.player_number == 2:
             self.player_move = PLAYER_1_MOVE;
