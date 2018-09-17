@@ -6,10 +6,13 @@ from player import Player;
 
 # Welcome to Ida's TicTacToe!
 
-#TODO: ADD MORE ERROR MESSAGES
-ERROR_MESSAGES=["\nSorry, we could not recognise your input. Please try again!\n","\nSomeone is already at this position! Please try again\n"]
+ERROR_MESSAGE = {"General":"\nSorry, we could not recognise your input. Please try again.\n",
+                "Duplicate":"\nSomeone is already placed here! Please enter another position.\n",
+                "Invalid Numbers":"\nInvalid input numbers, make sure the position is between co-ordinates 1,1 and 3,3. Try again!\n",
+                "Incorrect Format":"\nSorry, we could not recognise your input. Make sure you're entering an \'x,y\' where X and Y are values between 1 and 3. Try again!\n"
+                }
 COMMA=","
-PLAYER_QUIT="q"
+QUIT="q"
 
 class TicTacToe:
 
@@ -25,44 +28,53 @@ class TicTacToe:
         self.show_current_board();
         self.play();
 
-    # Gets the value the player input
+    # loops through the game getting the player coordinates each time and checking that its valid
     def play(self):
         player_input_coordinates = self.get_player_input();
-        while player_input_coordinates != PLAYER_QUIT: # Check that the player doesn't want to quit
+        while player_input_coordinates != QUIT:
 
-            # Checks that the player entered a valid value
-            isValid = self.player_input_is_valid(player_input_coordinates);
-            if (isValid):
+            is_valid, error_message = self.player_input_is_valid(player_input_coordinates);
+            if (is_valid):
 
-                if self.board.has_someone_placed_here(self.i, self.j): # Checks that no one has already placed there
-                    self.board.set_player_move(self.player.get_player_move(), self.i, self.j);
+                if self.board.has_someone_placed_here(self.i, self.j):
+                    self.board.add_move_to_board(self.player.get_player_move(), self.i, self.j);
                     self.show_current_board();
                     self.finish_game_if_end();
                     self.player.switch_player();
                 else:
-                    print (ERROR_MESSAGES[1]);
+                    print (ERROR_MESSAGE["Duplicate"]);
             else:
-                print (ERROR_MESSAGES[0]);
+                print (error_message);
 
             player_input_coordinates = self.get_player_input();
 
         exit(); # exit if the player wants to quit
 
-    # Prints the current board to console
     def show_current_board(self):
         print(self.board.get_current_board_string());
 
     # Checks if the player entered a "<int>,<int>" for the coordinates in this format
+    # Returns a specific error message for invalid input
     def player_input_is_valid(self, input_value):
+        error_message = '';
+        is_valid = False;
+
         if len(input_value) == 3:
             if (input_value[1] == COMMA and str(input_value[0]).isdigit() and str(input_value[2]).isdigit()):
                 x = int(input_value[0]);
                 y = int(input_value[2]);
                 if (x <= 3 and x >= 1 and y <= 3 and y >= 1):
+                    # set the indexes of the co-ordinate position
                     self.i = y - 1;
                     self.j = x - 1;
-                    return True;
-        return False;
+                    is_valid = True;
+                else:
+                    error_message = ERROR_MESSAGE["Invalid Numbers"];
+            else:
+                error_message = ERROR_MESSAGE["Incorrect Format"];
+        else:
+            error_message = ERROR_MESSAGE["General"];
+        return False, error_message;
 
     def get_player_input(self):
         return input("Player " + str(self.player.get_player_number()) + " enter a coord x,y to place your " + self.player.get_player_move() + " or enter 'q' to give up: ");

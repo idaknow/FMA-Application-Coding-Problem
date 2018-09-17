@@ -17,7 +17,7 @@ class Board:
             output_board += '\n\n';
         return output_board;
 
-    def set_player_move(self, move, i, j):
+    def add_move_to_board(self, move, i, j):
         self.board[i][j] = move;
 
     def has_someone_placed_here(self, i, j):
