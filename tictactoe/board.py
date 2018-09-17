@@ -17,8 +17,11 @@ class Board:
             output_board += '\n\n';
         return output_board;
 
-    def add_player_move(self, move, i, j):
+    def set_player_move(self, move, i, j):
         self.board[i][j] = move;
+
+    def has_someone_placed_here(self, i, j):
+        return self.board[i][j] == EMPTY_SPACE;
 
     def won_the_game(self):
         return self.row_win() or self.column_win() or self.diagonal_win();
