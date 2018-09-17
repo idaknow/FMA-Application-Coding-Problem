@@ -1,6 +1,8 @@
 #!/usr/bin/python
 import sys
 
+from board import Board;
+
 # Welcome to Ida's TicTacToe
 
 #TODO: ADD MORE ERROR MESSAGES
@@ -15,7 +17,7 @@ class TicTacToe:
 
     # Initialises the tictactoe board, players and index values
     def __init__(self):
-        self.board = [[EMPTY_SPACE for x in range(3)] for y in range(3)]
+        self.board = [[EMPTY_SPACE for x in range(3)] for y in range(3)];
         self.player = 1;
         self.player_move = PLAYER_1_MOVE;
         self.i = 0; # indexes of the players coordinates
@@ -118,6 +120,10 @@ class TicTacToe:
                 if self.board[i][j] == EMPTY_SPACE:
                     return False;
         return True;
+
+# Testing
+board = Board();
+print(board.get_current_board_string());
 
 # Functions called to begin the game
 ttt = TicTacToe();
