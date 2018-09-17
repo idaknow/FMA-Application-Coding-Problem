@@ -1,93 +1,46 @@
-# Yay, Tic Tac Toe!  
+# Ida's Tic Tac Toe!  
 
-We are going old school. 
+Welcome to my Python console based version of Tic Tac Toe that allows two human players to play on a 3 x 3 board.
 
-You need to implement a console based version of Tic Tac Toe that allows two human players to play the game on a 3 x 3 board.
+## How to run
 
-It's really simple...  The first player will be the X, the second player will be the O. You keep playing the game until there is a winner, a draw, or someone gives up.
+1. Download this awesome tictactoe using `git clone https://github.com/idaknow/TicTacToe-MYOBCodingProblem.git`.
+2. Ensure [Python3](https://www.python.org/downloads/) is downloaded on your computer 
+3. Run the tictactoe.py file in the tictactoe package, such as `python3 tictactoe/tictactoe.py`
 
-### Submision guidelines
+## How to play Tic Tac Toe
 
-* Make a github repo with your submission
-* Write your solution in one of the following programming languages: C#, Java, Python, Ruby or JavaScript (pick the language you are most comfortable with)        
-* Do not do a front end / UI for the application, it should be console based
-* Take your time and write the best code possible  
-* Include a readme.md on how to execute your solution and any assumptions you made  
-* If you are unsure of anything, feel free to ask additional clarifying questions - we're here to help!  
+The instructions to run the file will begin the crazy fun tictactoe game!!
 
-### Game Play
+Each player is given a turn to input coordinates of the 2D board to place their X or O:
 
-* Two players are required for a game.  
-* Each player will assume either an “X” or “O”.  
-* Players take turn to play till a player wins, or the end of the game (whichever happens first).  
-* Player X always starts the game.  
-
-### Condition for a win
-
-* A player wins when all fields in a column are taken by the player.
-* A player wins when all fields in a row are taken by the player.
-* A player wins when all fields in a diagonal are taken by the player.
-
-### Conditions for a draw
-
-The game is drawn when all fields are taken on the board.  
-
-### Example Game
-
-An example run through of a game console would be...
-
-~~~
-Welcome to Tic Tac Toe!
-
-Here's the current board:
-
-. . .
-. . .
+```
 . . .
 
-Player 1 enter a coord x,y to place your X or enter 'q' to give up: 1,1
-
-Move accepted, here's the current board:
-
-X . .  
-. . . 
 . . .
 
-Player 2 enter a coord x,y to place your O or enter 'q' to give up: 1,1
-
-Oh no, a piece is already at this place! Try again...
-
-Player 2 enter a coord x,y to place your O or enter 'q' to give up: 1,3
-
-Move accepted, here's the current board:
-
-X . O  
-. . . 
 . . .
+```
 
-Player 1 enter a coord x,y to place your X or enter 'q' to give up: 2,1
+For example, if Player 1 inputs the co-ordinated 1,1 the new board will look like:
 
-Move accepted, here's the current board:
-
-X . O  
-X . . 
-. . .
-
-Player 2 enter a coord x,y to place your O or enter 'q' to give up: 2,2
-
-Move accepted, here's the current board:
-
-X . O  
-X O . 
-. . .
-
-Player 1 enter a coord x,y to place your X or enter 'q' to give up: 3,1
-
-Move accepted, well done you've won the game!  
-
-X . O  
-X O . 
+```
 X . .
-~~~
 
-The system should display appropriate messages for incorrect coordinates and a draw.
+. . .
+
+. . .
+```
+
+Now it's the turn of Player 2 to input their co-ordinates. The aim of the game is to try and win by getting 3 of your moves in a row, column or diagonal. It's a draw if the whole board gets full up, but no one has explicitly won a row, column or diagonal.You can quit the game at any time by inputting 'q'.
+
+**HAVE FUN**
+
+### File Structure
+
+The tictactoe python package contains four files:
+
+* tictactoe.py: This is the file that calls the other classes to start the tictactoe game.
+* main_game.py: This class contains all the main functionality for the game, that is called on by tictactoe.py
+* board.py: This class contains all the information about the status of the game board.
+* player.py: This class contains the status of which player is currently playing
