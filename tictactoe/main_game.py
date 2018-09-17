@@ -40,6 +40,7 @@ class TicTacToe:
 
                 if self.board.has_someone_placed_here(self.i, self.j):
                     self.board.add_move_to_board(self.player.get_player_move(), self.i, self.j);
+                    self.show_current_board();
                     self.finish_game_if_end();
                     self.player.switch_player();
                 else:
@@ -76,7 +77,7 @@ class TicTacToe:
                 error_message = ERROR_MESSAGE["Incorrect Format"];
         else:
             error_message = ERROR_MESSAGE["General"];
-        return False, error_message;
+        return is_valid, error_message;
 
     def get_player_input(self):
         return input("Player " + str(self.player.get_player_number()) + " enter a coord \'x,y\' to place your " + self.player.get_player_move() + " or enter \'q\' to give up: ");
