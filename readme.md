@@ -6,7 +6,7 @@ Welcome to my Python console based version of Tic Tac Toe that allows two human 
 
 1. Download this awesome tictactoe using `git clone https://github.com/idaknow/TicTacToe-MYOBCodingProblem.git`.
 2. Ensure [Python3](https://www.python.org/downloads/) is downloaded on your computer 
-3. Run the tictactoe.py file in the tictactoe package, such as `python3 tictactoe/tictactoe.py`
+3. Run the tictactoe.py file in the tictactoe package, for example `python3 tictactoe/tictactoe.py`
 
 ## How to play Tic Tac Toe
 
